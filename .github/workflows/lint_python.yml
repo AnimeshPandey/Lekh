@@ -10,7 +10,7 @@ jobs:
       - run: bandit --recursive --skip B101 . || true  # B101 is assert statements
       - run: black --check . || true
       - run: codespell --quiet-level=2
-      - run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+      - run: flake8 . --count --ignore=E231,E265,E303,F401,W191,W391 --max-line-length=98 --show-source --statistics
       - run: isort --check-only --profile black . || true
       - run: pip install -r requirements.txt
       - run: mypy --ignore-missing-imports . || true
